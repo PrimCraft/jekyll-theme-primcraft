@@ -1,0 +1,5 @@
+{%- if include.page.["titles"][site.lang] -%}
+{{ include.page.titles[site.lang] | append: include.append }}
+{%- elsif include.page.title -%}
+{{ include.page.title | append: include.append }}
+{%- endif -%}

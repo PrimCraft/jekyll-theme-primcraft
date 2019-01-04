@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div class="pagetop"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+          {%- capture post_type_t -%}{{ page.type | prepend: "archive.of-"}}{%- endcapture -%}
+          {%- comment -%}TODO: deal with date formatting...{%- endcomment -%}
+          {%- if page.type == "year" -%}
+            {%- assign archive-filter = page.date | date: "%Y" -%}
+            {%- elsif page.type == "month" -%}
+            {%- assign archive-filter = page.date | date: "%Y/%m" -%}
+            {%- elsif page.type == "day" -%}
+            {%- assign archive-filter = page.date | date: "%Y/%m/%d" -%}
+            {%- else -%}
+            {%- capture archive-filter -%}{% t page.title %}{%- endcapture -%}
+          {%- endif -%}
+                <h1>{%t post_type_t %}:  {{archive-filter}}</h1>
+                {%- include full-post-list.html posts = page.posts -%}
+        </div>
+    </div>
+</div>

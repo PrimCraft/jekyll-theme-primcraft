@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<div class="home-splash">
+    <div class="container text-center">
+        <h1 class="display-4">{% t global.primcraft %}</h1>
+        <p class="lead">{% t global.primcraft-description %}</p>
+    </div>
+</div>
+<div class="container">
+    {%- include server-splash.html -%}
+    <div class="row justify-content-md-center mb-4">
+        <div class="col-lg-8">
+            {%- include server-status.html -%}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="home">
+                {%- if page.title -%}
+                <h1 class="page-heading">{{ page.title }}</h1>
+                {%- endif -%}
+                {{ content }}
+                {%- if site.posts.size > 0 -%}
+                {%- include full-post-list.html posts = site.posts limit = site.paginate -%}
+                {%- endif -%}
+                {{ paginator.total_pages }}
+                <div class="text-center my-4"><a href="/posts/">{% t global.view-all-posts %}</a></div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            {%- include recent-annoucements.html -%}
+            {%- include related.html -%}
+        </div>
+    </div>
+</div>

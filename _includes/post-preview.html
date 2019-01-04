@@ -1,0 +1,26 @@
+<div class="post-list-item">
+    <h3>
+        {%- include post-link.html post = post -%}
+    </h3>
+    <p>
+        {%- if site.show_excerpts -%}
+        {{ post.excerpt | strip_html }}
+        {%- endif -%}
+    </p>
+    {%- capture total_words -%}{{ post.content | number_of_words }}{%- endcapture -%}
+    {%- capture excerpt_words -%}{{ post.excerpt | number_of_words }}{%- endcapture -%}
+    {%- unless total_words == excerpt_words -%}
+    <p class="mt-4 text-center">
+        <a href="{{ post.url | relative_url }}">{% t global.read-more %}</a>
+    </p>
+    {%- endunless -%}
+    {%- assign date_format = site.dateFormats[site.lang] | default: "%b %-d, %Y" -%}
+    <span class="text-muted">
+        {{ post.date | date: date_format }}
+        {% if post.author %}
+        {%- include username.html user = post.author prepend = " | "-%}
+        {% endif %}</span>
+    <ul class="list-inline d-inline mt-md-1">
+        {%- include page-tags.html page = post -%}
+    </ul>
+</div>

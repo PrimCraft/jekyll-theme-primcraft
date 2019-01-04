@@ -1,0 +1,8 @@
+{%- if page.toc -%}
+<div class="card col-4 mb-5">
+    <div class="card-body">
+        <h5 class="card-title text-center">{% t pages.toc %}</h5>
+        {{ content | toc_only }}
+    </div>
+</div>
+{%- endif -%}

@@ -1,0 +1,63 @@
+<footer class="text-center">
+  <div class="footer-main">
+    <div class="container">
+      {%- if site.data.social[site.lang] -%}
+      <ul class="list-inline footer-social">
+        {%- for entry in site.data.social[site.lang] -%}
+        <li class="list-inline-item">
+          {%- if entry.popover -%}
+          <a href="#/" data-toggle="popover" data-placement="top" data-trigger="focus" title="{{ entry.name }}"
+            data-content="{{ entry.popover }}">
+            <i class="{%- if entry.icon-class -%}{{ entry.icon-class }}{%- else -%}fab fa-{{ entry.id }}{% endif %} fa-2x"></i>
+          </a>
+          {%- elsif entry.link -%}
+          <a href="{{ entry.link }}">
+            <i class="{%- if entry.icon-class -%}{{ entry.icon-class }}{%- else -%}fab fa-{{ entry.id }}{% endif %} fa-2x"></i>
+          </a>
+          {%- endif -%}
+        </li>
+        {% endfor %}
+      </ul>
+      {%- endif -%}
+      <ul class="list-unstyled text-muted">
+        <li>{% t global.mojang-disclaimer %}</li>
+        <li>{% t global.cc-by-4-0-before %} <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> {% t global.cc-by-4-0-after %}</li>
+        <li>{% t global.last-generated %} {{site.time}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    © 2014 - {{ site.time | date: "%Y" }} PrimCraft
+  </div>
+</footer>
+
+</footer>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+  });
+  $('.popover-dismiss').popover({
+    trigger: 'focus'
+  })
+</script>
+{%- unless page.title -%}
+<script>
+  $.getJSON('https://api.mcsrvstat.us/1/primcraft.com', function (status) {
+    if (status.offline) {
+      $("#is-online").addClass("minecraft-text-4");
+      $("#is-online").html("Offline?");
+      $("#server-motd").html("---");
+    } else {
+      $("#online-count").html(status.players.online);
+      $("#capacity-count").html(status.players.max);
+      var motd = status.motd.raw.join("\n").replace(/\u00A7([0-9a-fr])([^\u00A7]*)/gi, '<span class="minecraft-text-$1">$2</span>');
+      $("#server-motd").html(motd);
+      $("#server-icon").attr("src", status.icon);
+    }
+  });
+</script>
+{%- endunless -%}

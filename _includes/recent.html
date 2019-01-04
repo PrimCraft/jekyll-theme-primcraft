@@ -1,0 +1,6 @@
+<div class="card mb-4">
+    <div class="card-header">{% t global.recent %}</div>
+    <ul class="list-group list-group-flush">
+        {%- include recent-post-list.html posts = site.posts -%}
+    </ul>
+</div>

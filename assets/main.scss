@@ -1,0 +1,236 @@
+---
+# Custom sytling stuff
+---
+
+$spacing-unit:        30px;
+$jumbotron-padding:   6rem;
+
+$server-splash-color: #222;
+$server-splash-bg:    #eeeeeedd;
+
+$social-color: (
+  discord: #7289da,
+  github:  #24292e,
+  qq:      #169ada,
+  rss:     #ed8232
+);
+
+$minecraft-color: (
+//code: (foreground, background)
+  0: (#000000, #000000),
+  1: (#0000aa, #00002a),
+  2: (#00aa00, #002A00),
+  3: (#00aaaa, #002a2a),
+  4: (#aa0000, #2a0000),
+  5: (#aa00aa, #2a002a),
+  6: (#ffaa00, #2a2a00),
+  7: (#aaaaaa, #2a2a2a),
+  8: (#555555, #151515),
+  9: (#5555ff, #15153f),
+  a: (#55ff55, #153f15),
+  b: (#55ffff, #153f3f),
+  c: (#ff5555, #3f1515),
+  d: (#ff55ff, #3f153f),
+  e: (#ffff55, #3f3f15),
+  f: (#ffffff, #3f3f3f)
+);
+
+@import "bootswatch/yeti/variables";
+@import "bootstrap";
+@import "bootswatch/yeti/bootswatch";
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+ h1, h2, h3, h4, h5, h6,
+ p, blockquote, pre,
+ ul, ol, dl, figure,
+ %vertical-rhythm {
+   margin-bottom: $spacing-unit / 2;
+ }
+
+ /**
+  * Basically a jumbotron
+  */
+.home-splash {
+  color: white;
+  background-image: url(/assets/jumbotron.jpg);
+  background-size: cover;
+  background-position: center center;
+  text-shadow: 0.1em 0.1em 0.1em #000000bb;
+  padding: $jumbotron-padding ($jumbotron-padding / 8);
+  margin-top: 50px;
+  margin-bottom: $jumbotron-padding / 2;
+  background-color: $jumbotron-bg;
+  @include border-radius($border-radius-lg);
+
+  @include media-breakpoint-up(sm) {
+    padding: ($jumbotron-padding * 2) $jumbotron-padding / 4;
+  }
+}
+
+.pagetop {
+  padding-top: 5rem;
+  padding-bottom: 50px;
+  margin-bottom: 5rem;
+  margin-top: 3rem;
+  background-image: url(/assets/pagetop.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+
+.post-list-item {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.post-header {
+  margin-bottom: 2rem;
+}
+
+
+.footer-main {
+  margin-top: 6rem;
+  padding: 3rem 0;
+  background: #f5f5f5;
+}
+
+.footer-copyright {
+  padding: 1rem 0;
+  color: white;
+  background: #999;
+}
+
+@each $social, $color in $social-color {
+  .fa-#{$social} {
+    color: $color
+  }
+
+  .fa-#{$social}:hover {
+    color: lighten($color, 15%);
+    text-decoration: none;
+  }
+}
+
+@each $code, $colors in $minecraft-color {
+  $foreground-color: nth($colors, 1);
+  $background-color: nth($colors, 2);
+  .minecraft-text-#{$code} {
+    color: $foreground-color;
+    text-shadow: 0.05rem 0.05rem 0.05rem $background-color;
+  }
+}
+
+.minecraft-text-r {
+  color: inherit !important;
+  text-shadow: inherit !important;
+}
+
+.minecraft-text {
+  @extend .text-monospace;
+  @extend .minecraft-text-f;
+}
+
+.footer-social > .list-inline-item:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.server-splash {
+  margin-bottom: 2rem;
+  background: $server-splash-bg;
+}
+
+/*
+ * Reference: list-group-item-action
+ */
+.server-splash-action {
+  color: $server-splash-color;
+
+  // Hover state
+  @include hover-focus {
+    color: $server-splash-color;
+    filter: brightness(97%)
+  }
+
+  &:active {
+    color: $server-splash-color;
+    filter: brightness(92%)
+  }
+}
+
+.server-splash-link:hover {
+  text-decoration: none;
+}
+
+.server-splash .list-inline-item:not(:last-child) {
+  margin-right: 0.25rem;
+}
+
+.side-panel-tags .list-inline-item:not(:last-child) {
+  margin-right: 0.25rem;
+}
+
+.post-content {
+  margin-bottom: 5rem
+}
+
+.section-nav {
+  @extend .list-unstyled;
+}
+
+.section-nav ul {
+  @extend .list-unstyled;
+}
+
+.toc-entry {
+  @extend .ml-4;
+}
+
+.toc-h1 {
+  margin-left: 0 !important;
+}
+
+.carousel-item{
+  height: 32rem;
+} 
+.carousel-item img{
+  height: 32rem;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.nav-pills .active {
+  border: none;
+}
+
+.carousel-caption {
+  text-shadow: 0.1em 0.1em 0.1em #000000bb;
+}
+
+.kramdown table {
+  @extend .table;
+  @extend .table-striped;
+  @extend .table-hover;
+}
+
+.kramdown h1, h2 {
+  @extend .mt-5;
+}
+
+.kramdown h3 {
+  @extend .mt-3;
+  font-size: 1.5rem;
+}
+
+.kramdown h4 {
+  font-size: 1.2rem;
+}
+
+.kramdown ol {
+  padding-left: 1.2rem;
+}
+
+.kramdown ul {
+  padding-left: 1.2rem;
+}

@@ -1,0 +1,8 @@
+{%- assign post = include.post -%}
+<a href="{{ post.url | relative_url }}">
+        {%- if post.titles[site.lang] -%}
+        {{ post.titles[site.lang] }}
+        {%- else -%}
+        {{ post.title }}
+        {%- endif -%}
+</a>

@@ -1,0 +1,7 @@
+<div class="card mb-4">
+    <div class="card-header">{% t global.announcements %}</div>
+    <ul class="list-group list-group-flush">
+        {%- assign filtered-post-list = site.posts | where: "list-filter", "announcement" -%}
+        {%- include recent-post-list.html posts = filtered-post-list -%}
+    </ul>
+</div>

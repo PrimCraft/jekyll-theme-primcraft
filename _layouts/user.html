@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+{%- include head.html -%}
+
+<body>
+    {%- include header.html -%}
+    <div class="pagetop"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                {{ content }}
+            </div>
+            <div class="col-lg-3">
+                <div class="card mb-4">
+                    <div class="card-header">{% t user.user-info %}</div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <p class="text-muted mb-0">{% t user.minecraft-id %}</p>
+                                <h6 class="mb-1">{{ page.minecraft-id }}</h6>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <p class="text-muted mb-0">{% t user.name %}</p>
+                                <h6 class="mb-1">{{ page.name }}</h6>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {%- include footer.html -%}
+
+</body>
+
+</html>

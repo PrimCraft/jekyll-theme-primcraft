@@ -1,0 +1,24 @@
+{%- assign dirs = include.page.url | split: '/' -%}
+{%- assign root_page = site.servers | where: "code", dirs[2] | first -%}
+<nav class="navbar-light mb-5">
+    <a class="navbar-brand" href="{{ root_page.url | prepend: site.baseurl }}">{%- include fmi.html data = root_page.title datas = root_page.titles -%}</a>
+    {%- assign server_pages = site.servers | where: "code", dirs[2] -%}
+    <nav class="flex-column nav nav-pills">
+        {%- for server_page in site.servers -%}
+        {%- assign server_page_dirs = server_page.url | split: '/' -%}
+        {%- if server_page_dirs[2] == root_page.code -%}
+        {%- if server_page_dirs[3] -%}
+        {%- unless server_page_dirs[4] -%}
+        {%- if dirs[3] == server_page_dirs[3] -%}
+        <a class="nav-link active" href="{{ server_page.url | prepend: site.baseurl }}">{%- include page-title.html page =
+                server_page -%}</a>
+        {%- else -%}
+        <a class="nav-link" href="{{ server_page.url | prepend: site.baseurl }}">{%- include page-title.html page =
+                server_page -%}</a>
+        {%- endif -%}
+        {%- endunless -%}
+        {%- endif -%}
+        {%- endif -%}
+        {%- endfor -%}
+    </nav>
+</nav>

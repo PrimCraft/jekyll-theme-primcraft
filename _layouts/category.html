@@ -1,0 +1,9 @@
+---
+layout: page
+---
+<ul class="list-unstyled">
+{% assign sorted_cats = site.categories | sort %}
+{%- for cat in sorted_cats -%}
+    <li><a href="{{site.baseurl}}/category/{{cat[0] | slugify}}">{%t cat[0] %}</a></li>
+{%- endfor -%}
+</ul>

@@ -1,0 +1,9 @@
+{%- if include.limit -%}
+    {%- for post in include.posts limit: include.limit -%}
+        {%- include post-preview.html posts = include.posts -%}
+    {%- endfor -%}
+    {%- else -%}
+    {%- for post in include.posts -%}
+        {%- include post-preview.html posts = include.posts -%}
+    {%- endfor -%}
+{%- endif -%}

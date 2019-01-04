@@ -1,0 +1,10 @@
+{%- for cat in include.page.categories -%}
+<li class="list-inline-item">
+    <a href="{{ cat | slugify | prepend: '/category/' | prepend: site.baseurl }}" class="badge badge-pill badge-primary">{%- t cat -%}</a>
+</li>
+{%- endfor -%}
+{%- for tag in include.page.tags -%}
+<li class="list-inline-item">
+    <a href="{{ tag | slugify | prepend: '/tag/' | prepend: site.baseurl }}" class="badge badge-pill badge-light">{%- t tag -%}</a>
+    </li>
+{%- endfor -%}

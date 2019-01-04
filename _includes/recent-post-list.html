@@ -1,0 +1,24 @@
+{%- if include.posts.size > 0 -%}
+{%- for post in include.posts limit:1 -%}
+<a href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ post.title | escape }}</h5>
+        {%- assign date_format = site.dateFormats[site.lang] | default: "%b %-d, %Y" -%}
+        <small class="text-muted" style="min-width: 6em">{{ post.date | date: date_format }}</small>
+    </div>
+    <p class="mb-1">{{ post.excerpt | strip_html }}</p>
+</a>
+{%- endfor -%}
+{%- if include.posts.size > 1 -%}
+{%- for post in include.posts offset:1 limit:4 -%}
+<a href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+        {{ post.title | escape }}
+        <small class="text-muted" style="min-width: 6em">{{ post.date | date: site.dateFormats[site.lang] | default: "%b %-d, %Y"}}</small>
+    </div>
+</a>
+{%- endfor -%}
+{%- endif -%}
+{%- else -%}
+<li class="list-group-item">Nothing to see here... </li>
+{%- endif -%}

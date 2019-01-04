@@ -1,0 +1,11 @@
+{%- assign user = include.user -%}
+{% assign user-data = site.users | where: 'minecraft-id', user | first %}
+{%- if user-data -%}
+    {%- if user-data.name -%}
+    {{include.prepend}}<a href="/users/{{ user }}">{{ user-data.name}}</a>
+    {%- else -%}
+    {{include.prepend}}<a href="/users/{{ user }}"></a>{{ user }}</a>
+    {%- endif -%}
+{%- else -%}
+    {{ user | prepend: include.prepend }}
+{%- endif -%}
