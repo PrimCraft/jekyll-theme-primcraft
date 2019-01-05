@@ -18,6 +18,12 @@
 
         <ol class="breadcrumb" id="navigation">
         </ol>
+        
+        <ul class="list-unstyled">
+          <li>Bucket URL: <a href="{{ site.data.buckets.map-archive.url }}">{{ site.data.buckets.map-archive.url }}</a></li>
+          <li>Bucket Website URL: <a href="{{ site.data.buckets.map-archive.site }}">{{
+              site.data.buckets.map-archive.site }}</a></li>
+        </ul>
 
         <div id="listing"></div>
       </div>
@@ -30,8 +36,8 @@
 
   <script type="text/javascript">
     var S3BL_IGNORE_PATH = true;
-    var BUCKET_URL = 'https://primcraftarchive.sfo2.digitaloceanspaces.com';
-    var BUCKET_WEBSITE_URL = 'https://primcraftarchive.sfo2.cdn.digitaloceanspaces.com';
+    var BUCKET_URL = '{{ site.data.buckets.map-archive.url }}';
+    var BUCKET_WEBSITE_URL = '{{ site.data.buckets.map-archive.site }}';
   </script>
 
 </body>
