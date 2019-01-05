@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+{%- include head.html -%}
+
+<body>
+
+  {%- include header.html -%}
+  <div class="pagetop"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <header class="post-header">
+          <h1 class="post-title">{%- include fmi.html datas = page.titles data = page.title -%}</h1>
+        </header>
+
+        {{ content }}
+
+        <ol class="breadcrumb" id="navigation">
+        </ol>
+
+        <div id="listing"></div>
+      </div>
+    </div>
+  </div>
+
+  {%- include footer.html -%}
+
+  <script src="/assets/js/list.js"></script>
+
+  <script type="text/javascript">
+    var S3BL_IGNORE_PATH = true;
+    var BUCKET_URL = 'https://primcraftarchive.sfo2.digitaloceanspaces.com';
+    var BUCKET_WEBSITE_URL = 'https://primcraftarchive.sfo2.cdn.digitaloceanspaces.com';
+  </script>
+
+</body>
+
+</html>

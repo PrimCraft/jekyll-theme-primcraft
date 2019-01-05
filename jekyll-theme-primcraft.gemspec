@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-theme-primcraft"
-  spec.version       = "0.0.9"
+  spec.version       = "0.0.10"
   spec.authors       = ["BakaSoniji"]
   spec.email         = ["bakasoniji@gmail.com"]
 
