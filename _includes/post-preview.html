@@ -2,6 +2,9 @@
     <h3>
         {%- include post-link.html post = post -%}
     </h3>
+    {%- if post.thumbnail -%}
+        <img src="{{ post.thumbnail }}" class="mb-3 w-100">
+    {%- endif -%}
     <p>
         {%- if site.show_excerpts -%}
         {{ post.excerpt | strip_html }}
