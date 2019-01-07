@@ -3,7 +3,7 @@
         {%- include post-link.html post = post -%}
     </h3>
     {%- if post.thumbnail -%}
-        <img src="{{ post.thumbnail }}" class="mb-3 mw-100">
+        <a href="{{ post.url | relative_url }}"><img src="{{ post.thumbnail }}" class="mb-3 mw-100"></a>
     {%- endif -%}
     <p>
         {%- if site.show_excerpts -%}
