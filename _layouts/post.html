@@ -26,8 +26,8 @@ layout: content
         {%- include page-tags.html page = page -%}
       </ul>
   </header>
-  {%- if post.thumbnail -%}
-    <img src="{{ post.thumbnail }}" class="mb-3 mw-100">
+  {%- if page.thumbnail -%}
+    <img src="{{ page.thumbnail }}" class="mb-3 mw-100">
   {%- endif -%}
   {%- include toc.html -%}
   <div class="post-content e-content" itemprop="articleBody">
