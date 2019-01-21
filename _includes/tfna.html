@@ -1,10 +1,10 @@
-<div class="alert alert-warning">
+<div class="alert alert-light">
 <h4 class="alert-heading">{% t global.tfna-title %}</h4>
 <p class="mb-0">{% t global.tfna-description %}
 <a class="alert-link" href="{{ site.baseurl_root }}
 {%- unless include.lang == site.defaultLang -%}
 /{{ include.lang }}
 {%- endunless -%}
-{{include.page.url}}">{{ site.languageNames[include.lang] }}</a>
+{{include.page.url}}"><span lang="{{ include.lang }}">{{ site.languageNames[include.lang] }}</span></a>
 </p>
 </div>
