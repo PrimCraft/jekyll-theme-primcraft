@@ -26,7 +26,7 @@ layout: default
                 {%- include full-post-list.html posts = site.posts limit = site.paginate -%}
                 {%- endif -%}
                 {{ paginator.total_pages }}
-                <div class="text-center my-4"><a href="/posts/">{% t global.view-all-posts %}</a></div>
+                <div class="text-center my-4"><a href="{{ site.baseurl }}/posts/">{% t global.view-all-posts %}</a></div>
             </div>
         </div>
         <div class="col-lg-4">
