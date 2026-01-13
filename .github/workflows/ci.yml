@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout theme
+        uses: actions/checkout@v4
+        with:
+          path: theme
+
+      - name: Checkout primcraft.com
+        uses: actions/checkout@v4
+        with:
+          repository: PrimCraft/primcraft.com
+          path: site
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+          working-directory: site
+
+      - name: Point site to local theme
+        run: |
+          cd site
+          sed -i 's|gem "jekyll-theme-primcraft".*|gem "jekyll-theme-primcraft", path: "../theme"|' Gemfile
+          rm -f Gemfile.lock
+
+      - name: Install dependencies
+        run: |
+          cd site
+          bundle install
+
+      - name: Build Jekyll site
+        run: |
+          cd site
+          bundle exec jekyll build --verbose
