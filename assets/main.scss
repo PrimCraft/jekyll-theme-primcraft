@@ -2,6 +2,8 @@
 # Custom sytling stuff
 ---
 
+@use "sass:math";
+
 $spacing-unit:        30px;
 $jumbotron-padding:   6rem;
 
@@ -46,7 +48,7 @@ $minecraft-color: (
  p, blockquote, pre,
  ul, ol, dl, figure,
  %vertical-rhythm {
-   margin-bottom: $spacing-unit / 2;
+   margin-bottom: math.div($spacing-unit, 2);
  }
 
  /**
@@ -58,14 +60,14 @@ $minecraft-color: (
   background-size: cover;
   background-position: center center;
   text-shadow: 0.1em 0.1em 0.1em #000000bb;
-  padding: $jumbotron-padding ($jumbotron-padding / 8);
+  padding: $jumbotron-padding math.div($jumbotron-padding, 8);
   margin-top: 50px;
-  margin-bottom: $jumbotron-padding / 2;
+  margin-bottom: math.div($jumbotron-padding, 2);
   background-color: $jumbotron-bg;
   @include border-radius($border-radius-lg);
 
   @include media-breakpoint-up(sm) {
-    padding: ($jumbotron-padding * 2) $jumbotron-padding / 4;
+    padding: ($jumbotron-padding * 2) math.div($jumbotron-padding, 4);
   }
 }
 
