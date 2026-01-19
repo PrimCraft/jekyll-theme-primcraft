@@ -1,0 +1,17 @@
+{
+  "name": "jekyll-theme-primcraft",
+  "version": "0.1.0",
+  "description": "Jekyll theme for PrimCraft",
+  "scripts": {
+    "vendor": "rm -rf _sass && mkdir -p _sass/bootswatch && cp -r node_modules/bootstrap/scss/* _sass/ && cp -r node_modules/bootswatch/dist/* _sass/bootswatch/",
+    "build": "pnpm vendor"
+  },
+  "keywords": ["jekyll", "theme"],
+  "author": "BakaSoniji",
+  "license": "MIT",
+  "packageManager": "pnpm@10.12.1",
+  "devDependencies": {
+    "bootstrap": "4.6.2",
+    "bootswatch": "4.6.2"
+  }
+}

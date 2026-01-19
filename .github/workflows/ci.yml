@@ -21,10 +21,28 @@ jobs:
           repository: PrimCraft/primcraft.com
           path: site
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+          cache-dependency-path: theme/pnpm-lock.yaml
+
+      - name: Install npm dependencies and vendor SCSS
+        run: |
+          cd theme
+          pnpm install
+          pnpm vendor
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: '4.0'
           bundler-cache: true
           working-directory: site
 
