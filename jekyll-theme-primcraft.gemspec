@@ -13,6 +13,7 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README)!i) }
 
   spec.add_runtime_dependency "jekyll", ">= 3.8", "< 5.0"
+  spec.add_runtime_dependency 'jekyll-sass-converter', '~> 2.2'  # Pin to 2.x for sassc (gem load_paths support)
   spec.add_runtime_dependency 'bootstrap', '~> 4.3.1'
   spec.add_runtime_dependency 'bootswatch', '~> 4.3.1'
   spec.add_runtime_dependency 'jekyll-multiple-languages-plugin', '~> 1.8'
