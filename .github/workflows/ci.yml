@@ -24,7 +24,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          run_install: false
+          package_json_file: theme/package.json
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,8 +34,8 @@ jobs:
           cache-dependency-path: theme/pnpm-lock.yaml
 
       - name: Install npm dependencies and vendor SCSS
+        working-directory: theme
         run: |
-          cd theme
           pnpm install
           pnpm vendor
 
