@@ -46,7 +46,7 @@ jobs:
         run: gem build jekyll-theme-primcraft.gemspec
 
       - name: Configure RubyGems credentials (OIDC)
-        uses: rubygems/configure-rubygems-credentials@v1
+        uses: rubygems/configure-rubygems-credentials@main
 
       - name: Publish to RubyGems
         run: gem push jekyll-theme-primcraft-${{ steps.version.outputs.version }}.gem
